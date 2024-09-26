@@ -28,7 +28,7 @@ func New(host, port, name, user, password, dirSqls, binPath string) *Flyway {
 	}
 }
 
-func (f Flyway) FlywayMigrate() error {
+func (f Flyway) Migrate() error {
 	cmd := exec.Command(
 		f.BinPath,
 		"-url=jdbc:"+fmt.Sprintf("mysql://%s:%s/%s", f.DbHost, f.DbPort, f.DbName),
@@ -42,7 +42,7 @@ func (f Flyway) FlywayMigrate() error {
 	return cmd.Run()
 }
 
-func (f Flyway) FlywayClean() error {
+func (f Flyway) Clean() error {
 	cmd := exec.Command(
 		f.BinPath,
 		"-url=jdbc:"+fmt.Sprintf("mysql://%s:%s/%s", f.DbHost, f.DbPort, f.DbName),
