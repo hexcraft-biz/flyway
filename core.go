@@ -16,6 +16,18 @@ type Flyway struct {
 	BinPath    string
 }
 
+func New(host, port, name, user, password, dirSqls, binPath string) *Flyway {
+	return &Flyway{
+		DbHost:     host,
+		DbPort:     port,
+		DbName:     name,
+		DbUser:     user,
+		DbPassword: password,
+		DirSqls:    dirSqls,
+		BinPath:    binPath,
+	}
+}
+
 func (f Flyway) FlywayMigrate() error {
 	cmd := exec.Command(
 		f.BinPath,
