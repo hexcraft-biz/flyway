@@ -49,6 +49,7 @@ func (f Flyway) Clean() error {
 		"-user="+f.DbUser,
 		"-password="+f.DbPassword,
 		"-locations=filesystem:"+f.DirSqls,
+		"-cleanDisabled=false",
 		"clean",
 	)
 	cmd.Stdout = os.Stdout
